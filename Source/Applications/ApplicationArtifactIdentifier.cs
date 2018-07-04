@@ -31,7 +31,6 @@ namespace Dolittle.Applications
             Location = location;
             Artifact = artifact;
 
-
             ThrowIfLocationStructureDoesNotMatchApplicationStructure(location);
         }
 
@@ -108,6 +107,9 @@ namespace Dolittle.Applications
             return stringBuilder.ToString();
         }
 
+        // Comment, it's really hard to figure out if the Location strcture matches the application structure when the
+        // IApplicationStructure can be so loosly defined. Particularry hard to validate when the we can have recursive
+        // fragments in the "middle" of an ApplicationStructure
         void ThrowIfLocationStructureDoesNotMatchApplicationStructure(IApplicationLocation location)
         {
             ThrowIfEmptyLocationStructure(location);
@@ -123,6 +125,7 @@ namespace Dolittle.Applications
                 {
                     throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
                 }
+
             }
         }
 
