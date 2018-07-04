@@ -35,16 +35,8 @@ namespace Dolittle.Applications
             ThrowIfLocationStructureDoesNotMatchApplicationStructure(location);
         }
 
-
         /// <inheritdoc/>
-        public ApplicationArtifactIdentifier(IApplication application, IApplicationLocation location, IArtifact artifact) 
-        {
-            this.Application = application;
-                this.Location = location;
-                this.Artifact = artifact;
-               
-        }
-                public IApplication Application { get; }
+        public IApplication Application { get; }
 
         /// <inheritdoc/>
         public IApplicationLocation Location { get; }
