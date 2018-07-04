@@ -1,14 +1,9 @@
-﻿/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
 using System;
 using Machine.Specifications;
-using It = Machine.Specifications.It;
 
-namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_application_structure_with_4_correct_segments
+namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter
 {
-    public class when_converting_string_identifier_with_mismatched_application_name : given.an_application_resource_identifier_converter
+    public class when_identifier_string_has_mismatched_application_name : given.an_ApplicationArtifactIdentifierStringConverter
     {
         const string bounded_context_name = "TheBoundedContext";
         const string module_name = "TheModule";
