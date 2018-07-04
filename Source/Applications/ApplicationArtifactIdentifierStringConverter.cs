@@ -112,7 +112,6 @@ namespace Dolittle.Applications
             var artifactType = _artifactTypes.GetFor(artifactTypeIdentifier);
             var artifact = new Artifact(artifactName, artifactType, artifactGeneration);
 
-            //TODO: Reminder for myself, validate AAI with ApplicationStructure
             var applicationArtifactIdentifier = new ApplicationArtifactIdentifier(
                 _application,
                 new ApplicationLocation(segments), 

@@ -2,6 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,10 +30,21 @@ namespace Dolittle.Applications
             Application = application;
             Location = location;
             Artifact = artifact;
+
+
+            ThrowIfLocationStructureDoesNotMatchApplicationStructure(location);
         }
 
+
         /// <inheritdoc/>
-        public IApplication Application { get; }
+        public ApplicationArtifactIdentifier(IApplication application, IApplicationLocation location, IArtifact artifact) 
+        {
+            this.Application = application;
+                this.Location = location;
+                this.Artifact = artifact;
+               
+        }
+                public IApplication Application { get; }
 
         /// <inheritdoc/>
         public IApplicationLocation Location { get; }
@@ -102,6 +114,34 @@ namespace Dolittle.Applications
             stringBuilder.Append($" @ {Location.ToString()}");
            
             return stringBuilder.ToString();
+        }
+
+        void ThrowIfLocationStructureDoesNotMatchApplicationStructure(IApplicationLocation location)
+        {
+            ThrowIfEmptyLocationStructure(location);
+            
+            IApplicationStructureFragment root, child;
+
+            root = Application.Structure.Root;
+
+            foreach (var locationSegment in location.Segments)
+            {
+                if (root == null 
+                    || root is NullApplicationStructureFragment)
+                {
+                    throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
+                }
+            }
+        }
+
+        void ThrowIfEmptyLocationStructure(IApplicationLocation location)
+        {
+            if (location.Segments.Count() == 0 &&
+                !(Application.Structure is NullApplicationStructure) || 
+                !(Application.Structure.Root is NullApplicationStructureFragment))
+            {
+                throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
+            }
         }
     }
 }
