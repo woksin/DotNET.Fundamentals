@@ -29,11 +29,7 @@ namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringCon
 
         Because of = () => identifier = converter.FromString(string_identifier);
 
-        It should_return_a_matching_identifier = () => identifier.ShouldNotBeNull();
-        It should_hold_the_application = () => identifier.Application.ShouldEqual(application);
-        It should_hold_the_artifact = () => identifier.Artifact.Name.Value.ShouldEqual(resource_name);
-        It should_hold_the_bounded_context_segment = () => identifier.Location.Segments.First().Name.AsString().ShouldEqual(bounded_context_name);
-        It should_hold_the_artifact_type = () => identifier.Artifact.Type.ShouldEqual(artifact_type.Object);
-        It should_hold_the_artifact_generation = () => identifier.Artifact.Generation.Value.ShouldEqual(artifact_generation);
+        //TODO: Reminder for me, It should throw an DoesNotMatchApplicationStructure exception
+
     }
 }
