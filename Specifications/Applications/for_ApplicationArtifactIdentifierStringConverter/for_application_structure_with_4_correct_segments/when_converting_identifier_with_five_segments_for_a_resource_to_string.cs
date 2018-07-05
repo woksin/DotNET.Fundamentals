@@ -36,8 +36,6 @@ namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringCon
 
         Establish context = () =>
         {
-            var application = new Mock<IApplication>();
-            application.SetupGet(a => a.Name).Returns(application_name);
             var bounded_context = new BoundedContext(bounded_context_name);
             var module = new Module(bounded_context, module_name);
             var feature = new Feature(module, feature_name);
@@ -55,7 +53,7 @@ namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringCon
 
             var artifact = new Artifact(artifact_name, artifact_type.Object, artifact_generation);
             identifier = new ApplicationArtifactIdentifier(
-                application.Object,
+                application,
                 location.Object,
                 artifact);
         };
