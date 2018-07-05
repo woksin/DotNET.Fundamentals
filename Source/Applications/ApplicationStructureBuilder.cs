@@ -23,8 +23,6 @@ namespace Dolittle.Applications
             _root = root;
         }
 
-        
-
         /// <summary>
         /// Define the root of the <see cref="IApplicationStructure"/>
         /// </summary>
@@ -35,7 +33,6 @@ namespace Dolittle.Applications
             var builder = new ApplicationStructureBuilder(root);
             return builder;
         }      
-
 
         /// <inheritdoc/>
         public IApplicationStructure Build()

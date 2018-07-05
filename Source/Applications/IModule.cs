@@ -7,7 +7,8 @@ namespace Dolittle.Applications
     /// <summary>
     /// Defines a module within a <see cref="IBoundedContext"/>
     /// </summary>
-    public interface IModule : IApplicationLocationSegment<ModuleName>, IBelongToAnApplicationLocationSegmentTypeOf<IBoundedContext>, ICanHoldApplicationLocationSegmentsOfType<IFeature>
+    public interface IModule : IApplicationLocationSegment<ModuleName>, IBelongToAnApplicationLocationSegmentTypeOf<IBoundedContext>, ICanHoldApplicationLocationSegmentsOfType<IFeature>,
+        IAmARequiredStructureFragmentType
     {
         /// <summary>
         /// Add a feature to the <see cref="Module"/>

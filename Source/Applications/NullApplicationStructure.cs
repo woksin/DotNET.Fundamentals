@@ -3,6 +3,8 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+using System;
+
 namespace Dolittle.Applications
 {
     /// <summary>
@@ -12,5 +14,11 @@ namespace Dolittle.Applications
     {
         /// <inheritdoc/>
         public IApplicationStructureFragment Root => NullApplicationStructureFragment.Instance;
+
+        /// <inheritdoc/>
+        public (bool, Exception) IsValid()
+        {
+            return (true, null);
+        }
     }
 }

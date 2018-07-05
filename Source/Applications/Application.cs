@@ -2,6 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 
 namespace Dolittle.Applications
@@ -25,6 +26,8 @@ namespace Dolittle.Applications
             Name = name;
             Structure = structure;
             Prefixes = prefixes ?? new IApplicationLocationSegment[0];
+
+            ThrowIfApplicationStructureIsNotValid();
         }
 
         /// <summary>
@@ -45,5 +48,17 @@ namespace Dolittle.Applications
 
         /// <inheritdoc/>
         public IEnumerable<IApplicationLocationSegment> Prefixes { get; }
+
+        void ThrowIfApplicationStructureIsNotValid()
+        {
+            var isValidResult = Structure.IsValid();
+
+            bool result = isValidResult.Item1;
+            Exception resultException = isValidResult.Item2;
+
+            if (!result)
+                throw new InvalidApplicationStructure(Name, Structure, resultException);
+
+        }
     }
 }
