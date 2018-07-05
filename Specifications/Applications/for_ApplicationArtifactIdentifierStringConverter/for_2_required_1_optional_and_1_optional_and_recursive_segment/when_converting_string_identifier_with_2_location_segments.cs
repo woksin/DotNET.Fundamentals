@@ -8,15 +8,12 @@ using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_application_structure_with_4_correct_segments
+namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_2_required_1_optional_and_1_optional_and_recursive_segment
 {
-    public class when_converting_string_identifier_with_bounded_context_and_module : given.an_application_resource_identifier_converter
+    public class when_converting_string_identifier_with_2_location_segments : given.an_application_resource_identifier_converter
     {
         const string bounded_context_name = "TheBoundedContext";
         const string module_name = "TheModule";
-        const string feature_name = "TheFeature";
-        const string sub_feature_name = "TheSubFeature";
-        const string second_level_sub_feature_name = "TheSecondLevelSubFeature";
         const string resource_name = "MyResource";
         const int artifact_generation = 1;
         

@@ -1,6 +1,6 @@
 using Machine.Specifications;
 
-namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_application_structure_with_4_correct_segments.given
+namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_2_required_1_optional_and_1_optional_and_recursive_segment.given
 {
     public class all_dependencies
     {

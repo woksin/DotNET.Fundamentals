@@ -114,7 +114,7 @@ namespace Dolittle.Applications
         {
             ThrowIfEmptyLocationStructure(location);
             
-            IApplicationStructureFragment root, child;
+            IApplicationStructureFragment root;
 
             root = Application.Structure.Root;
 

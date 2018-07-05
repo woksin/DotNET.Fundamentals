@@ -2,7 +2,7 @@ using Dolittle.Artifacts;
 using Machine.Specifications;
 
 
-namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_structure_with_3_fragments
+namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_2_required_and_1_optional_segment
 {
     public class when_converting_identifier_with_3_segments_to_string : given.an_ApplicationArtifactStringConverter
     {

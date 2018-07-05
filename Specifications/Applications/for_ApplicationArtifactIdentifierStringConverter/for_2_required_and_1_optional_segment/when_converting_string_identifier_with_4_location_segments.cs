@@ -7,29 +7,32 @@ using System.Linq;
 using Machine.Specifications;
 using It = Machine.Specifications.It;
 
-namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_application_structure_with_4_correct_segments
+namespace Dolittle.Applications.Specs.for_ApplicationArtifactIdentifierStringConverter.for_2_required_and_1_optional_segment
 {
-    public class when_converting_string_identifier_with_only_one_location : given.an_application_resource_identifier_converter
+    public class when_converting_string_identifier_with_4_location_segments : given.an_ApplicationArtifactStringConverter
     {
-        const string location_name = "TheBoundedContext";
+        const string bounded_context_name = "TheBoundedContext";
+        const string module_name = "TheModule";
+        const string feature_name = "TheFeature";
+        const string sub_feature_name = "TheSubFeature";
         const string resource_name = "MyResource";
         const int artifact_generation = 1;
 
         static string string_identifier =
             $"{application_name}{ApplicationArtifactIdentifierStringConverter.ApplicationSeparator}" +
-            $"{location_name}" +
+            $"{bounded_context_name}{ApplicationArtifactIdentifierStringConverter.ApplicationLocationSeparator}" +
+            $"{module_name}{ApplicationArtifactIdentifierStringConverter.ApplicationLocationSeparator}" +
+            $"{feature_name}{ApplicationArtifactIdentifierStringConverter.ApplicationLocationSeparator}" +
+            $"{sub_feature_name}" +
             $"{ApplicationArtifactIdentifierStringConverter.ApplicationArtifactSeparator}{resource_name}"+
             $"{ApplicationArtifactIdentifierStringConverter.ApplicationArtifactTypeSeparator}{artifact_type_name}"+
             $"{ApplicationArtifactIdentifierStringConverter.ApplicationArtifactGenerationSeperator}{artifact_generation}";
 
         static Exception result;
 
-        Because module_is_required_but_missing = () => result = Catch.Exception(() => converter.FromString(string_identifier));
+        Because of = () => result = Catch.Exception(() => converter.FromString(string_identifier));
 
-        It should_throw_an_ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure = () => 
+        It should_throw_ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure = () => 
             result.ShouldBeOfExactType(typeof(ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure));
-
-        
-
     }
 }
