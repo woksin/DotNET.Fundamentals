@@ -38,10 +38,10 @@ namespace Dolittle.Applications
                 return (false, new ApplicationStructureFragmentCannotHaveMoreThanOneChild());
             if (IApplicationStructureFragmentTypeIsARequiredType(root.Type) && !root.Required) 
                 return (false, new ApplicationStructureFragmentMustBeRequired(root));
-            if (!IApplicationStructureFragmentTypeCanBeRecursive(root.Type) && !root.Recursive) 
+            if (! IApplicationStructureFragmentTypeCanBeRecursive(root.Type) && root.Recursive) 
                 return (false, new ApplicationStructureFragmentCannotBeRecursive(root));
 
-            if (root.Children != null && Root.Children.Any())
+            if (root.Children != null && root.Children.Any())
             {
                 return IsValid(root.Children.First());
             }

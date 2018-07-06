@@ -31,7 +31,7 @@ namespace Dolittle.Applications
             Location = location;
             Artifact = artifact;
 
-            ThrowIfLocationStructureDoesNotMatchApplicationStructure(location);
+            // ThrowIfLocationStructureDoesNotMatchApplicationStructure(location);
         }
 
         /// <inheritdoc/>
@@ -107,36 +107,35 @@ namespace Dolittle.Applications
             return stringBuilder.ToString();
         }
 
-        // Comment, it's really hard to figure out if the Location strcture matches the application structure when the
-        // IApplicationStructure can be so loosly defined. Particularry hard to validate when the we can have recursive
-        // fragments in the "middle" of an ApplicationStructure
-        void ThrowIfLocationStructureDoesNotMatchApplicationStructure(IApplicationLocation location)
-        {
-            ThrowIfEmptyLocationStructure(location);
+        // void ThrowIfLocationStructureDoesNotMatchApplicationStructure(IApplicationLocation location)
+        // {
+        //     ThrowIfEmptyLocationStructure(location);
             
-            IApplicationStructureFragment root;
+        //     IApplicationStructureFragment root;
 
-            root = Application.Structure.Root;
+        //     root = Application.Structure.Root;
 
-            foreach (var locationSegment in location.Segments)
-            {
-                if (root == null 
-                    || root is NullApplicationStructureFragment)
-                {
-                    throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
-                }
+        //     foreach (var locationSegment in location.Segments)
+        //     {
+        //         if (root == null 
+        //             || root is NullApplicationStructureFragment)
+        //         {
+        //             throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
+        //         }
 
-            }
-        }
+        //     }
+        // }
 
-        void ThrowIfEmptyLocationStructure(IApplicationLocation location)
-        {
-            if (location.Segments.Count() == 0 &&
-                !(Application.Structure is NullApplicationStructure) || 
-                !(Application.Structure.Root is NullApplicationStructureFragment))
-            {
-                throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
-            }
-        }
+        // void ThrowIfEmptyLocationStructure(IApplicationLocation location)
+        // {
+        //     if (location.Segments.Count() == 0 
+        //         && ( !(Application.Structure is NullApplicationStructure) || 
+        //             !(Application.Structure.Root is NullApplicationStructureFragment)
+        //             )
+        //         )
+        //     {
+        //         throw new ApplicationArtifactIdentfierLocationDoesNotMatchApplicationStructure(Application.Structure, location);
+        //     }
+        // }
     }
 }

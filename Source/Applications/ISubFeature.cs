@@ -7,7 +7,8 @@ namespace Dolittle.Applications
     /// <summary>
     /// Defines a <see cref="Feature">feature</see> inside a <see cref="Feature">feature</see>
     /// </summary>
-    public interface ISubFeature : IFeature, IBelongToAnApplicationLocationSegmentTypeOf<IFeature>
+    public interface ISubFeature : IFeature, IBelongToAnApplicationLocationSegmentTypeOf<IFeature>, 
+        IAmARecursiveStructureFragmentType
     {
     }
 }
